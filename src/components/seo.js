@@ -10,7 +10,7 @@ function SEO({ description, lang, image, meta, keywords, title }) {
       render={data => {
         const metaDescription =
           description || data.site.siteMetadata.description
-        const metaImage = image ? `${data.site.siteMetadata.siteUrl}${image}` : null
+        const metaImage = image && image.src ? `${data.site.siteMetadata.siteUrl}${image.src}` : null
         return (
           <Helmet
             htmlAttributes={{
@@ -37,7 +37,7 @@ function SEO({ description, lang, image, meta, keywords, title }) {
               },
               {
                 name: `twitter:creator`,
-                content: data.site.siteMetadata.author,
+                content: `@${data.site.siteMetadata.social.twitter}`,
               },
               {
                 name: `twitter:title`,
@@ -54,8 +54,12 @@ function SEO({ description, lang, image, meta, keywords, title }) {
                   content: metaImage
                 },
                 {
-                  name: `twitter:image`,
-                  content: metaImage
+                  property: 'og:image:width',
+                  content: image.width
+                },
+                {
+                  property: 'og:image:height',
+                  content: image.height
                 },
                 {
                   name: `twitter:card`,
@@ -108,6 +112,9 @@ const detailsQuery = graphql`
         siteUrl
         description
         author
+        social {
+          twitter
+        }
       }
     }
   }
