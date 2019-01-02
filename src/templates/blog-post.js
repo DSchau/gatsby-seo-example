@@ -12,9 +12,11 @@ class BlogPostTemplate extends React.Component {
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
 
+    const image = post.frontmatter.image ? post.frontmatter.image.childImageSharp.resize.src : null
+
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <SEO title={post.frontmatter.title} description={post.excerpt} />
+        <SEO title={post.frontmatter.title} description={post.excerpt} image={image} />
         <h1>{post.frontmatter.title}</h1>
         <p
           style={{
@@ -78,6 +80,13 @@ export const pageQuery = graphql`
       excerpt(pruneLength: 160)
       html
       frontmatter {
+        image: featured {
+          childImageSharp {
+            resize(width: 1200) {
+              src
+            }
+          }
+        }
         title
         date(formatString: "MMMM DD, YYYY")
       }
