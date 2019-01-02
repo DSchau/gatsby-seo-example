@@ -11,7 +11,7 @@ function SEO({ description, lang, image, meta, keywords, title, pathname }) {
         const metaDescription =
           description || data.site.siteMetadata.description
         const metaImage = image && image.src ? `${data.site.siteMetadata.siteUrl}${image.src}` : null
-        const metaUrl = `${data.site.siteMetadata.siteUrl}${pathname || ``}`
+        const metaUrl = `${data.site.siteMetadata.siteUrl}${pathname}`
         return (
           <Helmet
             htmlAttributes={{
@@ -104,6 +104,7 @@ SEO.defaultProps = {
   lang: `en`,
   meta: [],
   keywords: [],
+  pathname: ``
 }
 
 SEO.propTypes = {
@@ -112,6 +113,7 @@ SEO.propTypes = {
   image: PropTypes.object,
   meta: PropTypes.array,
   keywords: PropTypes.arrayOf(PropTypes.string),
+  pathname: PropTypes.string,
   title: PropTypes.string.isRequired,
   url: PropTypes.string,
 }
