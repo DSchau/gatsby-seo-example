@@ -1,4 +1,5 @@
-const siteUrl = process.env.DEPLOY_URL || `https://gatsby-seo-example.netlify.com` // handles Netlify deploys
+// handles Netlify deploys
+const siteUrl = process.env.URL || process.env.DEPLOY_URL || `https://gatsby-seo-example.netlify.com`
 
 module.exports = {
   siteMetadata: {
