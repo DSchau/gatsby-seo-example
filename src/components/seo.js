@@ -114,8 +114,7 @@ SEO.propTypes = {
   meta: PropTypes.array,
   keywords: PropTypes.arrayOf(PropTypes.string),
   pathname: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  url: PropTypes.string,
+  title: PropTypes.string.isRequired
 }
 
 export default SEO
