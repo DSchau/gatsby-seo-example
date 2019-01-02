@@ -1,4 +1,5 @@
 // handles Netlify deploys
+// No trailing slash allowed!
 const siteUrl = process.env.URL || process.env.DEPLOY_URL || `https://gatsby-seo-example.netlify.com`
 
 module.exports = {
